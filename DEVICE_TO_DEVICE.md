@@ -8,7 +8,6 @@
 ```
 
 ```mermaid
-
 participant C as Client
 participant S as Server
 
