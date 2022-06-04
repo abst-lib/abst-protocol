@@ -1,11 +1,4 @@
-# A standard packet
-
-```json
-{
-   "packet_id": u8
-   "content": [u8]
-}
-```
+# 
 
 ```mermaid
 sequenceDiagram
@@ -32,7 +25,6 @@ note over C,S: Jump to Key check now that they are paired
 end
 ```
 
-
 # Pre-defined Packets
 
 ## Hello from the other side
@@ -41,15 +33,17 @@ end
 
 ```json
 {
-   "packet_id": 0
+   "protocol": 0,
+   "packet_id": 0,
    "content": [{DEVICE ID}]
 }
 ```
 
-### Response 
+### Response
 
 ```json
-{
+{   
+   "protocol": 0,
    "packet_id": 0
    "content": "{DEVICE_ID, IS_PAIRED}"
 }
@@ -65,6 +59,7 @@ If either one says no. Go into Pair Talk
 
 ```json
 {
+   "protocol": 0,
    "packet_id": 1
    "content": {}
 }
@@ -72,10 +67,11 @@ If either one says no. Go into Pair Talk
 
 Other Device creates a public and private key
 
-### Response 
+### Response
 
 ```json
 {
+   "protocol": 0,
    "packet_id": 1
    "content": {PUBLIC_KEY}
 }
@@ -84,26 +80,28 @@ Other Device creates a public and private key
 Once it recieves the certifcate from the other device. Generate a your own public and private key. 
 
 This packet is encrypted
+
 ### Send
 
 ```json
 {
-   "packet_id": 1
+   "protocol": 0,
+   "packet_id": 1,
    "content": {PUBLIC_KEY}
 }
 ```
+
 Wait for a key check
 
 ## Key Check
 
-
-
-### Send 
+### Send
 
 Send a message encrypted using the private key
 
 ```json
 {
+   "protocol": 0,
    "packet_id": 2
    "content": []
 }
@@ -111,11 +109,11 @@ Send a message encrypted using the private key
 
 Wait for a response that is encrypted. You should be able to decrpyt via the key you have saved.
 
-### Response 
+### Response
 
 ```json
-{
-   "packet_id": 2
+{   "protocol": 0,
+   "packet_id": 2,
    "content": {}
 }
 ```
