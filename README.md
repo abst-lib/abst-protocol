@@ -29,6 +29,7 @@ Packets are going to be small objects in the MessagePack format. ABST has two Pa
 
 ```
 { 
+"protocol": 0, // Used to differentiate the protocol being used. 0 is for ABST
 "packet_id": 0,
 "content": [{}]
 }
@@ -38,11 +39,12 @@ A device to device packet requires part one that is the packet id. A byte 0-255.
 #### Device to Realm Packet
 ```json
 { 
-
+"protocol": 0, // Used to differentiate the protocol being used. 0 is for ABST
 "packet_id": 0, *//Send To another device*
 "target_device": UUID, *// Would be null if being sent to the realm*
 "peer_group": UUID, // Would be null if targeting a device or the realm*
 "content": { *// Encrypted with the public key from the server. Any packet from the Device\_Device  Protocol*
+  "protocol": 0, // Used to differentiate the protocol being used. 0 is for ABST
   "packet_id": 0
   "content": [{}]
  }
