@@ -63,10 +63,10 @@ Used to tell the Realm to relay the packet to another location
 
 Outside of the following values they should be used for application level data
 
-| 0   | device to device |
-| --- | ---------------- |
-| 1   | device to peer   |
-| 2   | device to realm  |
+| 0   | device to device                       |
+| --- | -------------------------------------- |
+| 1   | device to peer(Reserved and Undefined) |
+| 2   | device to realm                        |
 
 ### Defined Packet Types
 
@@ -74,34 +74,18 @@ These packet ids are used in the ABST protocol
 
 #### Device to Device - protocol id: 0
 
-| 0   | Heart beat                                            |                                                                                 |
-|:--- |:----------------------------------------------------- |:------------------------------------------------------------------------------- |
-| 1   | Hello. Allows for devices to check if they are paired |                                                                                 |
-| 2   | Pair Process                                          |                                                                                 |
-| 3   | Key Check                                             |                                                                                 |
-| 4   | Give Peer Group Access                                | Include the Public and Private key for the peer group. Also include the peer id |
-
-#### Device to Realm - protocol id: 2
-
-| 0   | Hello, I am here. Also I am open for connecting | Include the Device ID                  |
-|:--- |:----------------------------------------------- |:-------------------------------------- |
-| 1   | Connect to Device                               | Include your ID and the target device. |
-|     |                                                 |                                        |
+| 0   | Heart beat                                              |     |
+|:--- |:------------------------------------------------------- |:--- |
+| 1   | Error                                                   |     |
+| 2   | Hello. Allows for devices to ch*ec*k if they are paired |     |
+| 3   | Pair Request                                            |     |
+| 4   | Send Key                                                |     |
+| 5   | Key Check                                               |     |
+| 6   | Key Check Response                                      |     |
 
 #### Realm to Device - protocol id: 2
 
-| 0   | Back Heartbeat                                     |     |
-|:--- |:-------------------------------------------------- |:--- |
-| 1   | Notifies the target is being connected to a device |     |
-|     |                                                    |     |
-
-#### Peer to Device- protocol id 1
-
-Packets that are sent to peer groups. These are sent to the common realm they all share
-
-| 0   | Create a Peer Group | Include the Peer Group ID                                                                                                                       |
-|:--- |:------------------- |:----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Join Peer Group     | Include your peer group id. Your ID. And it will be sent to all devices notifying your arrival. If the encryption is bad. Then you can not join |
-| 2   | I am here           | Just notifies the Realm that you are here.                                                                                                      |
-|     |                     |                                                                                                                                                 |
-|     |                     |                                                                                                                                                 |
+| 0   | Heart Beat for the Realm |     |
+|:--- |:------------------------ |:--- |
+| 1   | Error                    |     |
+|     |                          |     |
