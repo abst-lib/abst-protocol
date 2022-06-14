@@ -13,7 +13,3 @@ debug_message: Optional<String>
 ```
 
 If we have a ref we can compare the error_id to the error_id list found on that packet's documentation
-
-
-
-
